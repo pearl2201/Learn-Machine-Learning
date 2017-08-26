@@ -18,5 +18,6 @@
         "**/*.js.map": true
     },
 
-    "typescript.check.workspaceVersion": false
+    "typescript.check.workspaceVersion": false,
+    "python.formatting.provider": "autopep8"
 }

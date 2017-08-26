@@ -4,16 +4,18 @@ import matplotlib.pyplot as plt
 from sklearn import neighbors
 from sklearn.metrics import accuracy_score
 import time
-from mnist import MNIST
+import mnist
 
-mndata = MNIST('E:\Anh Ngoc 2\Machine Learning\ls5\mnist')
-mndata.load_testing()
-mndata.load_training()
-X_test = mndata.test_images
-y_test = np.asarray(mndata.test_labels)
-X_train = mndata.train_images
-y_train = np.asarray(mndata.train_labels)
 
+X_test = mnist.test_images()
+
+y_test = mnist.test_labels()
+X_train = mnist.train_images()
+X_train = X_train.reshape(
+    (X_train.shape[0] * X_train.shape[1], X_train.shape[2]))
+print("X_train: ", X_train)
+y_train = mnist.train_labels()
+print("y_train: ", y_train)
 startTime = time.time()
 clf = neighbors.KNeighborsClassifier(n_neighbors=1, p=2)
 clf.fit(X_train, y_train)
